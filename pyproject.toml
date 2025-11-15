@@ -1,0 +1,9 @@
+[project]
+name = "storefront"
+version = "0.1.0"
+description = "A toolkit for embedding interactive storefront design to your product"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "python-liquid>=2.1.0",
+]
