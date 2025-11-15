@@ -1,7 +1,7 @@
-from pydantic import BaseModel
+from models.base_class import LiquidDropModel
 
 
-class Store(BaseModel):
+class Store(LiquidDropModel):
     id: str
     title: str
     description: str
