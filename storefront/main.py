@@ -1,11 +1,12 @@
 from liquid import render
 
 from liquid import Environment
-from liquid import FileSystemLoader
 
 from models import Product, Store
+from loader import FileSystemLoader
 
-env = Environment(loader=FileSystemLoader("examples/", ext=".liquid"))
+
+env = Environment(loader=FileSystemLoader("examples/"))
 
 
 def main():
