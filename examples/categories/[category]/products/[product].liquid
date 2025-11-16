@@ -1,3 +1,4 @@
-This is category {{ category_id }}
+{% extends 'base' %}
 
-Product id is {{ product_id }}
+{% block content %}Hello, {{ category_id }}!{% endblock %}
+{% block footer %}Hello, {{ product_id }}!{% endblock %}
