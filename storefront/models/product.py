@@ -1,4 +1,4 @@
-from models.base_class import LiquidDropModel
+from storefront.models.base_class import LiquidDropModel
 
 
 class Product(LiquidDropModel):

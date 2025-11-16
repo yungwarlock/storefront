@@ -1,7 +1,7 @@
-from models.user import User
-from models.store import Store
-from models.product import Product
-from models.collection import Collection
+from storefront.models.user import User
+from storefront.models.store import Store
+from storefront.models.product import Product
+from storefront.models.collection import Collection
 
 
 __all__ = [
