@@ -1,4 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EverFresh</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: lavenderblush;
+    }
+
+    #menu {
+      display: flex;
+      padding: 0 2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #title {
+      gap: 0.25rem;
+      display: flex;
+      padding: 2rem 0;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+
+
+</head>
+
 <body>
-  <div id="content">{% block content required %}{% endblock %}</div>
-  <div id="footer">{% block footer %}Default footer{% endblock %}</div>
+  <div id="menu">
+    <h5>Menu</h5>
+    <div id="title">
+      <h1>EverFresh</h2>
+        <p>Your one-stop shop for all food materials</p>
+    </div>
+    <h5>Profile</h5>
+  </div>
+
+  <div>
+    {% block content required %}{% endblock %}
+  </div>
 </body>
+
+</html>

@@ -70,8 +70,6 @@ class FileSystemLoader(BaseLoader):
         source_path = self.resolve_path(template_name)
         source, mtime = self._read(source_path)
 
-        matter = {}
-
         match = re.search(r"[]", template_name)
 
         print("match_name", match)
@@ -80,9 +78,6 @@ class FileSystemLoader(BaseLoader):
             source,
             str(source_path),
             partial(self._uptodate, source_path, mtime),
-            matter={
-                "params": "1",
-            },
         )
 
     @staticmethod
