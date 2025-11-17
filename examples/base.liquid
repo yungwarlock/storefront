@@ -4,51 +4,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EverFresh</title>
-
+  <title>{{ store.title }}</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      background-color: lavenderblush;
+      font-family: sans-serif;
+      margin: 0;
     }
 
-    #menu {
+    header {
+      background-color: #f8f9fa;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e9ecef;
       display: flex;
-      padding: 0 2rem;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
-    #title {
-      gap: 0.25rem;
-      display: flex;
-      padding: 2rem 0;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
+    nav a {
+      text-decoration: none;
+      color: #000;
+      margin: 0 1rem;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      padding: 1rem 2rem;
+      text-align: center;
+      border-top: 1px solid #e9ecef;
+      margin-top: 2rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .product-card {
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .product-card img.product-image {
+      max-width: 100%;
+      height: 200px; /* Fixed height for consistency */
+      object-fit: cover; /* Cover the area, cropping if necessary */
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .product-card h4 {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .product-card h4 a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .product-card h4 a:hover {
+      color: #007bff;
+    }
+
+    .product-card p {
+      font-size: 1rem;
+      color: #666;
     }
   </style>
-
-
 </head>
 
 <body>
-  <div id="menu">
-    <h5>Menu</h5>
-    <div id="title">
-      <h1>EverFresh</h2>
-        <p>Your one-stop shop for all food materials</p>
-    </div>
-    <h5>Profile</h5>
-  </div>
+  <header>
+    <h1><a href="/">{{ store.title }}</a></h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/categories">Categories</a>
+      <a href="/about">About Us</a>
+    </nav>
+  </header>
 
-  <div>
-    {% block content required %}{% endblock %}
-  </div>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 {{ store.title }}. All rights reserved.</p>
+  </footer>
 </body>
 
 </html>

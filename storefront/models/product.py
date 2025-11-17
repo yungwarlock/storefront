@@ -6,6 +6,8 @@ class Product(LiquidDropModel):
     name: str
     description: str
     price: float
+    image_url: str
+    category: str
 
     # Custom properties (will also be automatically exposed)
     @property
@@ -14,6 +16,6 @@ class Product(LiquidDropModel):
         return f"${self.price:.2f}"
 
     @property
-    def url(self) -> str:
-        """Another example property."""
-        return f"/products/{self.id}"
+    def handle(self) -> str:
+        """A URL-friendly handle for the product."""
+        return self.name.lower().replace(" ", "-")

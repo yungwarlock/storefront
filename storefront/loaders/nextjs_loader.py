@@ -1,5 +1,3 @@
-import os
-import re
 import asyncio
 from pathlib import Path
 from functools import partial

@@ -1,15 +1,15 @@
 {% extends 'base' %}
 
 {% block content %}
-  <h2>Welcome to {{ store.title }}!</h2>
-  <p>Your one-stop shop for everything you need.</p>
+{% assign products = store.products | where: "category", category_id %}
 
+  <h2>Welcome to {{ store.title }}!</h2>
   <h3>Featured Products</h3>
   <div class="product-grid">
-    {% for product in store.products %}
+    {% for product in products %}
       <div class="product-card">
         <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image" />
-        <h4><a href="products/{{ product.id }}">{{ product.name }}</a></h4>
+        <h4><a href="/products/{{ product.id }}">{{ product.name }}</a></h4>
         <p>{{ product.formatted_price }}</p>
       </div>
     {% endfor %}

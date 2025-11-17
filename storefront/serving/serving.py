@@ -21,26 +21,9 @@ env.add_tag(ExtendsTag)
 
 
 class StorefrontApp:
-    def __init__(self, host: str) -> None:
+    def __init__(self, host: str, store: Store) -> None:
         self.host, self.port = host.split(":")
-
-    def get_context(self):
-        product = Product(
-            id="12",
-            price=102.4,
-            name="Hello",
-            description="Hello",
-        )
-        store = Store(
-            id="12",
-            title="EverFresh",
-            description="Example Storefront",
-        )
-
-        return {
-            "store": store,
-            "products": [product],
-        }
+        self.store = store.model_dump()
 
     def start_server(self):
         @Request.application
@@ -48,9 +31,10 @@ class StorefrontApp:
             if not request.method == "GET":
                 return Response("", 405)
 
-            context = self.get_context()
+            template_path = request.path
+
             try:
-                template = env.get_template(request.path).render(**context)
+                template = env.get_template(template_path).render(store=self.store)
                 return Response(
                     template,
                     200,
