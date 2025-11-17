@@ -4,11 +4,13 @@ from liquid import Environment
 from liquid.extra import BlockTag
 from liquid.extra import ExtendsTag
 
+from storefront.loaders import PathLoader
 from storefront.models import Product, Store
-from storefront.nextjs_loader import FileSystemLoader
+
+from storefront.serving.serving import StorefrontApp
 
 
-env = Environment(loader=FileSystemLoader("examples"))
+env = Environment(loader=PathLoader("examples"))
 env.add_tag(BlockTag)
 env.add_tag(ExtendsTag)
 
@@ -20,13 +22,21 @@ def main():
         name="Hello",
         description="Hello",
     )
-    store = Store(id="12", title="EverFresh", description="Example Storefront")
+    store = Store(
+        id="12",
+        title="EverFresh",
+        description="Example Storefront",
+    )
 
     print(render("Hello, {{ product.formatted_price }}!", product=product))
     print(env.get_template("index").render(product=product, store=store))
     print(
         env.get_template("categories/1/products/2").render(product=product, store=store)
     )
+
+    app = StorefrontApp("localhost:5000")
+
+    app.start_server()
 
 
 if __name__ == "__main__":
